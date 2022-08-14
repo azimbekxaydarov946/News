@@ -1,5 +1,4 @@
 <div>
-
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
@@ -35,7 +34,7 @@
                         @foreach ($news as $item)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{ $item->image }}" alt="">
+                                    <img class="card-img rounded-0" src="{{asset('storage\\'.$item->image) }}" alt="">
                                     <a href="{{ route('detail', ['id'=> $item->id]) }}" class="blog_item_date"
                                         style="text-align: center">
                                         <h3>{{ date('j', strtotime($item->date)) }}</h3>

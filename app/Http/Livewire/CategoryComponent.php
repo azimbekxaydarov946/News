@@ -26,10 +26,11 @@ class CategoryComponent extends Component
             $this->search = null;
         }
 
-        $categories = Category::where('parent_id', ($this->search) ?? '>', 0)
-            ->paginate((int)$this->paginate);
+        $categories = Category::paginate((int)$this->paginate);
         $parents = Category::where('parent_id', 0)->get();
         $tags = Tag::all();
+    //    dd(public_path('storage\aNhzRjJqFXmtx6q4Tc9E2QH1P8uqQzy6Yn7mwET2.png'));
+    //    dd(storage_path('app\public\aNhzRjJqFXmtx6q4Tc9E2QH1P8uqQzy6Yn7mwET2.png'));
         return view('livewire.category-component', ['categories' => $categories, 'tags' => $tags, 'parents' => $parents])->layout('layouts.base');
     }
 
