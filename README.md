@@ -24,9 +24,9 @@
 
 <code>php artisan db:seed</code>
 
-<code>php artisan optimize</code>
-
 <code>php artisan storage:link</code>
+
+<code>php artisan optimize</code>
 
 <code>php artisan serve</code>
 
