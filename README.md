@@ -6,7 +6,7 @@
 
 <h3><b>Installation steps:</b></h3><br/>
 
-<code>git clone  https://github.com/azimbekxaydarov946/news.git</code>
+<code>git clone  https://github.com/azimbekxaydarov946/News.git</code>
 
 <code>cd news</code>
 
@@ -26,11 +26,13 @@
 
 <code>php artisan optimize</code>
 
+<code>php artisan storage:link</code>
+
 <code>php artisan serve</code>
 
 <h3><b>Authorization:</b></h3><br/>
 
-<code>URL: /admin </code?
+<code>URL: /admin </code>
     
     Login: admin@gmail.com
     Password: 12345678
