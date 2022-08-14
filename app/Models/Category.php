@@ -27,4 +27,8 @@ class Category extends Model
         return $this->belongsTo(Tag::class);
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 }

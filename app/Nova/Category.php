@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -47,9 +48,10 @@ class Category extends Resource
         return [
             ID::make()->sortable(),
             Text::make('name')->sortable(),
-            Number::make('parent_id')->sortable(),
+            BelongsTo::make('Category','parent'),
             Image::make('image')->sortable()->rules('required', 'image', 'mimes:jpeg,png,jpg,gif,svg'),
             Boolean::make('status')->sortable(),
+            BelongsTo::make('Tag')
         ];
     }
 

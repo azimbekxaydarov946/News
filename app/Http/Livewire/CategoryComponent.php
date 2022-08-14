@@ -16,7 +16,6 @@ class CategoryComponent extends Component
     {
         if ($this->paginate == 'all') {
             $this->paginate = Category::count();
-            dd($this->paginate);
         }
     }
 
@@ -27,10 +26,8 @@ class CategoryComponent extends Component
         }
 
         $categories = Category::paginate((int)$this->paginate);
-        $parents = Category::where('parent_id', 0)->get();
+        $parents = Category::with('parent')->get();
         $tags = Tag::all();
-    //    dd(public_path('storage\aNhzRjJqFXmtx6q4Tc9E2QH1P8uqQzy6Yn7mwET2.png'));
-    //    dd(storage_path('app\public\aNhzRjJqFXmtx6q4Tc9E2QH1P8uqQzy6Yn7mwET2.png'));
         return view('livewire.category-component', ['categories' => $categories, 'tags' => $tags, 'parents' => $parents])->layout('layouts.base');
     }
 

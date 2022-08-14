@@ -55,7 +55,8 @@ class News extends Resource
             BelongsTo::make('category')->searchable(),
             BelongsTo::make('user')->searchable(),
             Image::make('image')->sortable()->rules('required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10024'),
-            Boolean::make('status')->sortable()
+            Boolean::make('status')->sortable(),
+            BelongsTo::make('Tag')
         ];
     }
 
