@@ -1,4 +1,5 @@
 <div>
+
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
@@ -35,7 +36,7 @@
                             <article class="blog_item">
                                 <div class="blog_item_img">
                                     <img class="card-img rounded-0" src="{{ $item->image }}" alt="">
-                                    <a href="{{ route('detail', ['id', $item->id]) }}" class="blog_item_date"
+                                    <a href="{{ route('detail', ['id'=> $item->id]) }}" class="blog_item_date"
                                         style="text-align: center">
                                         <h3>{{ date('j', strtotime($item->date)) }}</h3>
                                         <p>{{ date('F', strtotime($item->date)) }}</p>
@@ -44,14 +45,14 @@
                                 </div>
 
                                 <div class="blog_details">
-                                    <a class="d-inline-block" href="{{ route('detail', ['id', $item->id]) }}">
+                                    <a class="d-inline-block" href="{{ route('detail', ['id'=>$item->id]) }}">
                                         <h2>{{ $item->title }}</h2>
                                     </a>
                                     <p>{{ $item->sub_title }}</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> {{ $item->user->name }}</a>
+                                        <li><a href="{{ route('detail', ['id'=> $item->id]) }}"><i class="fa fa-user"></i> {{ $item->user->name }}</a>
                                         </li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> {{ $item->comment_count }}
+                                        <li><a href="{{ route('detail', ['id'=>$item->id]) }}"><i class="fa fa-comments"></i> {{ $item->comment_count }}
                                                 Comments</a></li>
                                     </ul>
                                 </div>
@@ -122,4 +123,5 @@
         </div>
     </section>
     <!--================Blog Area =================-->
+
 </div>

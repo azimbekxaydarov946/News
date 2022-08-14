@@ -17,12 +17,6 @@ class Category extends Model
     {
         return $this->hasMany(News::class);
     }
-
-    public function parent()
-    {
-        return $this->belongsTo(Category::class, 'parent_id');
-    }
-
     public function contact()
     {
         return $this->hasMany(Contact::class, 'category_id');
