@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('description')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->boolean('status')->default(1)->comment('1-active,0-inactive');
             $table->timestamps();
         });
     }

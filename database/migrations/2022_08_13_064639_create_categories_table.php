@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->boolean('status')->default(1)->comment('1-active,0-inactive');
+            $table->unsignedBigInteger('tag_id')->nullable();
             $table->timestamps();
         });
     }

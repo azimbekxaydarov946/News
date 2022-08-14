@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,7 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Tag::truncate();
+        Tag::factory()->count(5)->create();
     }
 }

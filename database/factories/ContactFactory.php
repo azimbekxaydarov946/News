@@ -17,7 +17,11 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'email' => $this->faker->email(),
+            'description' => $this->faker->text(),
+            'category_id' => $this->faker->numberBetween(1, 10),
+            'status' => $this->faker->boolean()
         ];
     }
 }

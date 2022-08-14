@@ -17,7 +17,14 @@ class NewsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->name(),
+            'sub_title' => $this->faker->words(15,true),
+            'description' => $this->faker->text(),
+            'image' => $this->faker->imageUrl(),
+            'date' => $this->faker->dateTime(),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'category_id' => $this->faker->numberBetween(1, 10),
+            'tag_id' => $this->faker->numberBetween(1, 5)
         ];
     }
 }

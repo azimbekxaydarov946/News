@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Livewire\CategoryComponent;
+use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\DetailsComponent;
+use App\Http\Livewire\NewsComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{id?}',NewsComponent::class)->name('home');
+Route::get('/news/category/',CategoryComponent::class)->name('category');
+Route::get('/news/contact/',ContactComponent::class)->name('contact');
+Route::get('/detail/{id?}',DetailsComponent::class)->name('detail');
+
+
+
 
 Route::middleware([
     'auth:sanctum',

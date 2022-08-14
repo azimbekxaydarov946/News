@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->longText('text')->nullable();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->dateTime('date')->default(\Carbon\Carbon::now()->timezone('Asia/Ashgabat'));
+            $table->unsignedBigInteger('news_id')->nullable();
             $table->timestamps();
         });
     }
