@@ -52,7 +52,7 @@ class Comment extends Resource
             Text::make('name'),
             Email::make('email'),
             Textarea::make('text'),
-            BelongsTo::make('news')->searchable()
+            BelongsTo::make('news')
         ];
     }
 

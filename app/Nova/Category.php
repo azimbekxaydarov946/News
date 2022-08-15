@@ -48,8 +48,8 @@ class Category extends Resource
         return [
             ID::make()->sortable(),
             Text::make('name')->sortable(),
-            BelongsTo::make('Category','parent'),
-            Image::make('image')->sortable()->rules('required', 'image', 'mimes:jpeg,png,jpg,gif,svg'),
+            BelongsTo::make('Category','parent')->nullable(),
+            Image::make('image')->sortable()->rules('nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'),
             Boolean::make('status')->sortable(),
             BelongsTo::make('Tag')
         ];

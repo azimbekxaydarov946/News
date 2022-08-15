@@ -27,7 +27,7 @@ class News extends Resource
      *
      * @var string
      */
-    public static $title = 'date';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -52,8 +52,8 @@ class News extends Resource
             Text::make('sub_title'),
             Textarea::make('description'),
             DateTime::make('date','date')->hideFromIndex()->sortable(),
-            BelongsTo::make('category')->searchable(),
-            BelongsTo::make('user')->searchable(),
+            BelongsTo::make('category'),
+            BelongsTo::make('user'),
             Image::make('image')->sortable()->rules('required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10024'),
             Boolean::make('status')->sortable(),
             BelongsTo::make('Tag')
