@@ -3,28 +3,13 @@
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area section-padding">
         <div class="container">
-
-            @if (session()->has('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
-
-            @endif
-            @if (session()->has('error'))
-
-                <div class="alert alert-danger" role="alert">
-                    {{ session('error') }}
-                </div>
-            @endif
-
-
             <div class="row">
                 <div class="col-lg-8 posts-list">
 
                     <div class="single-post">
 
                         <div class="feature-img">
-                            <img class="img-fluid" src="{{asset('storage\\'.$details->image) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('storage\\' . $details->image) }}" alt="">
                         </div>
                         <div class="blog_details">
                             <h2>Second divided from form fish beast made every of seas
@@ -96,6 +81,17 @@
                     </div>
                     <div class="comment-form">
                         <h4>Add comment</h4>
+                        @if (session()->has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <form class="form-contact comment_form" wire:submit.prevent="add_comment" id="commentForm">
                             <div class="row">
                                 <div class="col-12">
@@ -144,7 +140,7 @@
                             <h3 class="widget_title">Post</h3>
                             @foreach ($news as $new)
                                 <div class="media post_item">
-                                    <img src="{{asset('storage\\'.$new->image) }}" alt="post" width="100$">
+                                    <img src="{{ asset('storage\\' . $new->image) }}" alt="post" width="100$">
                                     <div class="media-body">
                                         <a href="{{ route('detail', ['id' => $new->id]) }}">
                                             <h3>From life was you fish...</h3>
