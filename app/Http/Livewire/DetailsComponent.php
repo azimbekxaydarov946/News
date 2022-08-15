@@ -45,7 +45,7 @@ class DetailsComponent extends Component
 
     public function add_comment()
     {
-        $test = Comment::where('email', $this->email)->get();
+        $test = Comment::where('email', $this->email)->where('news_id',$this->detail)->get();
         if ($test->isEmpty() && $this->text) {
             Comment::create([
                 'name' => $this->name,
