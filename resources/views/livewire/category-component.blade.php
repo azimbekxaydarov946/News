@@ -21,6 +21,9 @@
                                     <!--Nav Button  -->
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab"
+                                            role="tab" aria-controls="nav-home"
+                                             wire:click.prevent="total()">Total</a>
                                             @foreach ($parents as $parent)
                                             <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab"
                                                role="tab" aria-controls="nav-home"
