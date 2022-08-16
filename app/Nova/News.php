@@ -54,7 +54,7 @@ class News extends Resource
             DateTime::make('date','date')->hideFromIndex()->sortable(),
             BelongsTo::make('category'),
             BelongsTo::make('user'),
-            Image::make('image')->sortable()->rules('required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10024'),
+            Image::make('image')->sortable()->rules('required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10024')->nullable(),
             Boolean::make('status')->sortable(),
             BelongsTo::make('Tag')
         ];

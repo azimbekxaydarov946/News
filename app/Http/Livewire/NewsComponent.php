@@ -27,16 +27,21 @@ class NewsComponent extends Component
 
     public function render()
     {
-        $news = News::with('user', 'category', 'tag')
+        $news = News::query()->with('user', 'category', 'tag')
             ->withCount('comment')
             ->whereHas('category', function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%');
             })
             ->orWhereHas('tag', function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%');
-            })
-            ->orderBy('date', $this->sort??'desc')
-            ->paginate($this->paginate);
+            });
+            if ($this->sort!='none') {
+                $news=$news->orderBy('date', $this->sort??'desc');
+            }
+            else{
+                $news=$news->inRandomOrder();
+            }
+            $news=$news->paginate($this->paginate);
         $categories = Category::withCount('news')->get();
         $tags = Tag::all();
 
