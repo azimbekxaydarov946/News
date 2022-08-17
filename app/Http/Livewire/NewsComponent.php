@@ -41,7 +41,7 @@ class NewsComponent extends Component
             else{
                 $news=$news->inRandomOrder();
             }
-            $news=$news->paginate($this->paginate);
+            $news=$news->paginate((int)$this->paginate);
         $categories = Category::withCount('news')->get();
         $tags = Tag::all();
 

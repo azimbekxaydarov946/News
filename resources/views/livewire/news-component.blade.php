@@ -49,8 +49,10 @@
                                     </a>
                                     <p>{{ $item->sub_title }}</p>
                                     <ul class="blog-info-link">
+                                        @if (isset($item->user->name))
                                         <li><a href="{{ route('detail', ['id'=> $item->id]) }}"><i class="fa fa-user"></i> {{ $item->user->name }}</a>
                                         </li>
+                                        @endif
                                         <li><a href="{{ route('detail', ['id'=>$item->id]) }}"><i class="fa fa-comments"></i> {{ $item->comment_count }}
                                                 Comments</a></li>
                                     </ul>
