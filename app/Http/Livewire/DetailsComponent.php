@@ -32,7 +32,7 @@ class DetailsComponent extends Component
                 ->orderBy('id', 'desc')
                 ->paginate(4);
         }])
-            ->with('user')
+            ->with('user','tag')
             ->withCount('comment')
             ->find($this->detail);
         return view('livewire.details-component', [
