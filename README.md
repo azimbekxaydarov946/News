@@ -28,6 +28,8 @@
 
 <code>php artisan optimize</code>
 
+<code>php artisan route:trans:clear</code>
+
 <code>php artisan serve</code>
 
 <h3><b>Authorization:</b></h3><br/>
