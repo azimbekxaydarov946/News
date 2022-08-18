@@ -4,7 +4,7 @@
         $title = 'title_' . app()->getLocale();
         $sub_title = 'sub_title_' . app()->getLocale();
         $description = 'description_' . app()->getLocale();
-        // dd($news[0]->{$title});
+        // dd($news);
     @endphp
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area section-padding">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="blog_details">
                             <h2>
-                                {{ $details->title }}
+                                {{ $details->{$title} }}
                             </h2>
                             <ul class="blog-info-link mt-3 mb-4">
                                 <li><a href="#"><i class="fa fa-user"></i> {{ $details->user->name }}</a></li>
