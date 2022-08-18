@@ -10,7 +10,9 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name_en',
+        'name_ru',
+        'name_uz',
     ];
 
     public function news()

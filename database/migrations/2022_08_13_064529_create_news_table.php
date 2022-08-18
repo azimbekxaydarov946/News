@@ -15,9 +15,18 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('sub_title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('title_en');
+            $table->string('title_ru');
+            $table->string('title_uz');
+
+            $table->text('sub_title_en')->nullable();
+            $table->text('sub_title_ru')->nullable();
+            $table->text('sub_title_uz')->nullable();
+
+            $table->text('description_en')->nullable();
+            $table->text('description_ru')->nullable();
+            $table->text('description_uz')->nullable();
+
             $table->string('image')->nullable();
             $table->dateTime('date')->default(\Carbon\Carbon::now()->timezone('Asia/Ashgabat'));
             $table->unsignedBigInteger('user_id')->nullable();

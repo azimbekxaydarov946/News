@@ -1,7 +1,11 @@
 <div>
-    {{-- @php
-        dd($details->tag->name);
-    @endphp --}}
+    @php
+        $name = 'name_' . app()->getLocale();
+        $title = 'title_' . app()->getLocale();
+        $sub_title = 'sub_title_' . app()->getLocale();
+        $description = 'description_' . app()->getLocale();
+        // dd($news[0]->{$title});
+    @endphp
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area section-padding">
         <div class="container">
@@ -20,24 +24,25 @@
                             <ul class="blog-info-link mt-3 mb-4">
                                 <li><a href="#"><i class="fa fa-user"></i> {{ $details->user->name }}</a></li>
                                 <li><a href="#"><i class="fa fa-comments"></i>{{ $details->comment_count }}
-                                        Comments</a></li>
+                                        {{ __('main.comments') }}</a></li>
 
                                 {{-- @foreach ($details->tag as $tag) --}}
                                 <li>
-                                    <a href="{{ route('home', ['id' => $details->tag->name]) }}">{{ $details->tag->name }}</a>
+                                    <a
+                                        href="{{ route('home', ['id' => $details->tag->{$name}]) }}">{{ $details->tag->{$name} }}</a>
                                 </li>
                                 {{-- @endforeach --}}
 
                             </ul>
                             <span style="display: inline-block;text-align: center; font-weight: 500; font-size: 18px">
-                                {{ $details->sub_title }}</span><br><br>
+                                {{ $details->{$sub_title} }}</span><br><br>
                             <p class="excert">
-                                {{ $details->description }}
+                                {{ $details->{$description} }}
                             </p>
                         </div>
                     </div>
                     <div class="comments-area">
-                        <h4>Comments</h4>
+                        <h4>{{ __('main.comments') }}</h4>
                         <!-- start comment user -->
                         @foreach ($details->comment as $item)
                             <div class="comment-list">
@@ -70,7 +75,7 @@
                         <!-- end comment user -->
                     </div>
                     <div class="comment-form">
-                        <h4>Add comment</h4>
+                        <h4>{{ __('main.add_comment') }}</h4>
                         @if (session()->has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('success') }}
@@ -87,25 +92,25 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                            placeholder="Write Comment" wire:model="text"></textarea>
+                                            placeholder="{{ __('main.write_comment') }}" wire:model="text"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input class="form-control" name="name" id="name" type="text"
-                                            placeholder="Name" wire:model="name">
+                                            placeholder="{{ __('main.name') }}" wire:model="name">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input class="form-control" name="email" id="email" type="email"
-                                            placeholder="Email" wire:model="email">
+                                            placeholder="{{ __('main.email') }}" wire:model="email">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send
-                                    Message</button>
+                                <button type="submit"
+                                    class="button button-contactForm btn_1 boxed-btn">{{ __('main.send_message') }}</button>
                             </div>
                         </form>
                     </div>
@@ -113,12 +118,12 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Category</h4>
+                            <h4 class="widget_title">{{ __('main.category') }}</h4>
                             <ul class="list cat-list">
                                 @foreach ($categories as $category)
                                     <li>
-                                        <a href="{{ route('home', ['id' => $category->name]) }}" class="d-flex">
-                                            <p>{{ $category->name }}</p>
+                                        <a href="{{ route('home', ['id' => $category->{$name}]) }}" class="d-flex">
+                                            <p>{{ $category->{$name} }}</p>
                                             <p>({{ $category->news_count }})</p>
                                         </a>
                                     </li>
@@ -127,13 +132,13 @@
                             </ul>
                         </aside>
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Post</h3>
+                            <h3 class="widget_title">{{ __('main.posts') }}</h3>
                             @foreach ($news as $new)
-                                <div class="media post_item">
-                                    <img src="{{ asset('storage\\' . $new->image) }}" alt="post" width="100$">
+                                <div class="media post_item d-flex  align-items-center">
+                                    <img src="{{ asset('storage\\' . $new->image) }}" alt="post" width="55%">
                                     <div class="media-body">
                                         <a href="{{ route('detail', ['id' => $new->id]) }}">
-                                            <h3>From life was you fish...</h3>
+                                            <h3>{{ $new->{$title} }}.</h3>
                                         </a>
                                         {{-- January 12, 2019} --}}
                                         <p>{{ date('F j, Y', strtotime($new->date)) }}</p>
@@ -142,11 +147,11 @@
                             @endforeach
                         </aside>
                         <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
+                            <h4 class="widget_title">{{ __('main.tags') }}</h4>
                             <ul class="list">
                                 @foreach ($tags as $tag)
                                     <li>
-                                        <a href="{{ route('home', ['id' => $tag->name]) }}">{{ $tag->name }}</a>
+                                        <a href="{{ route('home', ['id' => $tag->{$name}]) }}">{{ $tag->{$name} }}</a>
                                     </li>
                                 @endforeach
                             </ul>

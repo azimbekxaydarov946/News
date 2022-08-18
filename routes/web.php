@@ -17,20 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{id?}',NewsComponent::class)->name('home');
-Route::get('/news/category/',CategoryComponent::class)->name('category');
-Route::get('/news/contact/',ContactComponent::class)->name('contact');
-Route::get('/detail/{id?}',DetailsComponent::class)->name('detail');
+Route::group(
+    [
+        'prefix' => \LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+
+        Route::get('/{id?}',NewsComponent::class)->name('home');
+        Route::get('/news/category/',CategoryComponent::class)->name('category');
+        Route::get('/news/contact/',ContactComponent::class)->name('contact');
+        Route::get('/detail/{id?}',DetailsComponent::class)->name('detail');
+
+        Route::middleware([
+            'auth:sanctum',
+            config('jetstream.auth_session'),
+            'verified'
+        ])->group(function () {
+            Route::get('/dashboard', function () {
+                return view('dashboard');
+            })->name('dashboard');
+        });
+    });
 
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

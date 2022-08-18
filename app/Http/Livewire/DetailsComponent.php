@@ -54,9 +54,9 @@ class DetailsComponent extends Component
                 'news_id' => $this->detail
             ]);
             $this->clear_comment();
-            session()->flash('success', 'Comment added successfully');
+            session()->flash('success', __('main.comment_added_successfully'));
         } else {
-            session()->flash('error', 'You have already commented');
+            session()->flash('error', __('main.you_have_already_commented'));
         }
     }
 

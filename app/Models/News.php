@@ -13,7 +13,24 @@ class News extends Model
     ];
 
     protected $fillable = [
-        'title', 'sub_title', 'description', 'image', 'date', 'user_id', 'category_id', 'status', 'tag_id'
+        'title_en',
+        'title_ru',
+        'title_uz',
+        
+        'sub_title_en',
+        'sub_title_ru',
+        'sub_title_uz',
+
+        'description_en',
+        'description_ru',
+        'description_uz',
+
+        'image',
+        'date',
+        'user_id',
+        'category_id',
+        'status',
+        'tag_id'
     ];
 
     public function user()

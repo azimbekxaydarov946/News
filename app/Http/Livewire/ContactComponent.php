@@ -24,16 +24,16 @@ class ContactComponent extends Component
         $test = Contact::where('email', $this->email)
             ->whereDate('created_at', date('Y-m-d'))->get();
         if ($test->count()>0) {
-            session()->flash('error', 'You have already contacted');
+            session()->flash('error', __('main.you_have_already_contacted'));
         } else {
              Contact::create([
                 'name' => $this->name,
                 'email' => $this->email,
                 'text' => $this->text,
-                'category_id' => $this->category,
+                'category_id' => is_int($this->category)??null,
             ]);
 
-            session()->flash('success', 'Your message has been sent successfully');
+            session()->flash('success', __('main.your_message_has_been_sent_successfully'));
         }
     }
 }

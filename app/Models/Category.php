@@ -10,7 +10,13 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'image', 'parent_id', 'status', 'tag_id'
+        'name_en',
+        'name_ru',
+        'name_uz',
+        'image',
+        'parent_id',
+        'status',
+        'tag_id'
     ];
 
     public function news()

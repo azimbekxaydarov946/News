@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -29,7 +30,6 @@
 </head>
 
 <body>
-
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -57,12 +57,24 @@
                                             alt=""></a>
                                 </div>
                                 <!-- Main-menu -->
-                                <div class="main-menu d-none d-md-block">
+                                <div class="main-menu d-flex flex-wrap justify-content-between" >
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="{{ route('home') }}">Home</a></li>
-                                            <li><a href="{{ route('category') }}">Category</a></li>
-                                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                                            <li><a href="{{ route('home') }}">{{__('main.home')}}</a></li>
+                                            <li><a href="{{ route('category') }}">{{__('main.category')}}</a></li>
+                                            <li><a href="{{ route('contact') }}">{{__('main.contact')}}</a></li>
+                                        </ul>
+                                    </nav>
+                                    <nav>
+                                        <ul id="navigation">
+                                            @foreach (\LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                <li>
+                                                    <a rel="alternate" hreflang="{{ $localeCode }}"
+                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        {{ $localeCode }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </nav>
                                 </div>
@@ -123,10 +135,10 @@
                             <div class="footer-copy-right">
                                 <p>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;
+                                    {{__('main.copyright')}} &copy;
                                     <script>
                                         document.write(new Date().getFullYear());
-                                    </script> All rights reserved
+                                    </script> {{__('main.all_rights_reserved')}}
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>
@@ -134,9 +146,9 @@
                         <div class="col-lg-6">
                             <div class="footer-menu f-right">
                                 <ul>
-                                    <li><a href="{{route('home')}}">Home</a></li>
-                                    <li><a href="{{route('category')}}">Category</a></li>
-                                    <li><a href="{{route('contact')}}">Contact</a></li>
+                                    <li><a href="{{ route('home') }}">{{__('main.home')}}</a></li>
+                                    <li><a href="{{ route('category') }}">{{__('main.category')}}</a></li>
+                                    <li><a href="{{ route('contact') }}">{{__('main.contact')}}</a></li>
                                 </ul>
                             </div>
                         </div>

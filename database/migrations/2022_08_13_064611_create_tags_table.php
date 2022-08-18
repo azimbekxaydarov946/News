@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name_en')->unique();
+            $table->string('name_ru')->unique();
+            $table->string('name_uz')->unique();
             $table->timestamps();
         });
-        
+
     }
 
     /**

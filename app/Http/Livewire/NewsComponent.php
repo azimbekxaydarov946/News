@@ -30,10 +30,10 @@ class NewsComponent extends Component
         $news = News::query()->with('user', 'category', 'tag')
             ->withCount('comment')
             ->whereHas('category', function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%');
+                $query->where('name_'.\LaravelLocalization::setLocale(), 'like', '%' . $this->search . '%');
             })
             ->orWhereHas('tag', function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%');
+                $query->where('name_'.\LaravelLocalization::setLocale(), 'like', '%' . $this->search . '%');
             });
             if ($this->sort!='none') {
                 $news=$news->orderBy('date', $this->sort??'desc');
@@ -44,6 +44,8 @@ class NewsComponent extends Component
             $news=$news->paginate((int)$this->paginate);
         $categories = Category::withCount('news')->get();
         $tags = Tag::all();
+
+        // dd('name_'.\LaravelLocalization::setLocale());
 
         return view('livewire.news-component', ['news' => $news, 'categories' => $categories, 'tags' => $tags])->layout('layouts.base');
     }

@@ -21,7 +21,7 @@ class Tag extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'name_en';
 
     /**
      * The columns that should be searched.
@@ -30,7 +30,9 @@ class Tag extends Resource
      */
     public static $search = [
         'id',
-        'name',
+        'name_en',
+        'name_ru',
+        'name_uz',
     ];
 
     /**
@@ -43,7 +45,13 @@ class Tag extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')
+            Text::make('name_en')->creationRules('unique:tags,name_en')
+            ->updateRules('unique:tags,name_en,{{resourceId}}'),
+            Text::make('name_ru')->creationRules('unique:tags,name_ru')
+            ->updateRules('unique:tags,name_ru,{{resourceId}}'),
+            Text::make('name_uz')->creationRules('unique:tags,name_uz')
+            ->updateRules('unique:tags,name_uz,{{resourceId}}'),
+
         ];
     }
 

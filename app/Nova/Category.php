@@ -25,7 +25,7 @@ class Category extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'name_en';
 
     /**
      * The columns that should be searched.
@@ -34,7 +34,9 @@ class Category extends Resource
      */
     public static $search = [
         'id',
-        'name',
+        'name_en',
+        'name_ru',
+        'name_uz',
     ];
 
     /**
@@ -47,7 +49,9 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name')->sortable(),
+            Text::make('name_en')->sortable(),
+            Text::make('name_ru')->sortable(),
+            Text::make('name_uz')->sortable(),
             BelongsTo::make('Category','parent')->nullable(),
             Image::make('image')->sortable()->rules('nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg')->nullable(),
             Boolean::make('status')->sortable(),

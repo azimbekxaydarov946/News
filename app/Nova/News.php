@@ -27,7 +27,7 @@ class News extends Resource
      *
      * @var string
      */
-    public static $title = 'title';
+    public static $title = 'title_en';
 
     /**
      * The columns that should be searched.
@@ -36,6 +36,9 @@ class News extends Resource
      */
     public static $search = [
         'id',
+        'title_en',
+        'title_ru',
+        'title_uz',
     ];
 
     /**
@@ -48,9 +51,15 @@ class News extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('title'),
-            Text::make('sub_title'),
-            Textarea::make('description'),
+            Text::make('title_en'),
+            Text::make('title_ru'),
+            Text::make('title_uz'),
+            Text::make('sub_title_en'),
+            Text::make('sub_title_ru'),
+            Text::make('sub_title_uz'),
+            Textarea::make('description_en'),
+            Textarea::make('description_ru'),
+            Textarea::make('description_uz'),
             DateTime::make('date','date')->hideFromIndex()->sortable(),
             BelongsTo::make('category'),
             BelongsTo::make('user'),
