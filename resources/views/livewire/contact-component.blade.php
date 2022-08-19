@@ -1,4 +1,8 @@
 <div>
+    @php
+    $name = 'name_' . app()->getLocale();
+    // dd($news[0]->{$title});
+@endphp
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
         <div class="container">
@@ -47,7 +51,7 @@
                                     <select id="" class="form-control" wire:model="category">
                                         <option>{{__('main.other_reasons')}}</option>
                                         @foreach ($catgeories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name_\LaravelLocalization::setLocale() }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->{$name} }}</option>
                                         @endforeach
                                     </select>
                                 </div>
