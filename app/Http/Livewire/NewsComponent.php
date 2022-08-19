@@ -39,7 +39,7 @@ class NewsComponent extends Component
                 $news=$news->inRandomOrder();
             }
             else{
-                $news=$news->orderBy('date', $this->sort);
+                $news=$news->orderBy('date', $this->sort??'desc');
             }
             $news=$news->paginate((int)$this->paginate);
         $categories = Category::withCount('news')->get();

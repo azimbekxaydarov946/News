@@ -23,7 +23,7 @@
                             </div>
                             <div class="col-auto">
                                 <select class="form-select" wire:model="sort">
-                                    <option selected>{{ __('main.none') }}</option>
+                                    <option value="None" >{{ __('main.none') }}</option>
                                     <option value="desc">{{ __('main.new') }}</option>
                                     <option value="asc">{{ __('main.old') }}</option>>
                                 </select>
