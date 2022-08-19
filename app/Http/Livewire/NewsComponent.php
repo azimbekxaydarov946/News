@@ -35,18 +35,15 @@ class NewsComponent extends Component
             ->orWhereHas('tag', function ($query) {
                 $query->where('name_'.app()->getLocale(), 'like', '%' . $this->search . '%');
             });
-            if ($this->sort!='none') {
-                $news=$news->orderBy('date', $this->sort??'desc');
+            if ($this->sort=='None' || $this->sort==null) {
+                $news=$news->inRandomOrder();
             }
             else{
-                $news=$news->inRandomOrder();
+                $news=$news->orderBy('date', $this->sort);
             }
             $news=$news->paginate((int)$this->paginate);
         $categories = Category::withCount('news')->get();
         $tags = Tag::all();
-
-        // dd('name_'.\LaravelLocalization::setLocale());
-
         return view('livewire.news-component', ['news' => $news, 'categories' => $categories, 'tags' => $tags])->layout('layouts.base');
     }
 }
