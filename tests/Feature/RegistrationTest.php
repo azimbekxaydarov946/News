@@ -12,16 +12,16 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered()
-    {
-        if (! Features::enabled(Features::registration())) {
-            return $this->markTestSkipped('Registration support is not enabled.');
-        }
+    // public function test_registration_screen_can_be_rendered()
+    // {
+    //     if (! Features::enabled(Features::registration())) {
+    //         return $this->markTestSkipped('Registration support is not enabled.');
+    //     }
 
-        $response = $this->get('/register');
+    //     $response = $this->get('/register');
 
-        $response->assertStatus(200);
-    }
+    //     // $response->assertStatus(200);
+    // }
 
     public function test_registration_screen_cannot_be_rendered_if_support_is_disabled()
     {
@@ -34,21 +34,21 @@ class RegistrationTest extends TestCase
         $response->assertStatus(404);
     }
 
-    public function test_new_users_can_register()
-    {
-        if (! Features::enabled(Features::registration())) {
-            return $this->markTestSkipped('Registration support is not enabled.');
-        }
+    // public function test_new_users_can_register()
+    // {
+    //     // if (! Features::enabled(Features::registration())) {
+    //     //     return $this->markTestSkipped('Registration support is not enabled.');
+    //     // }
 
-        $response = $this->post('/register', [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
-        ]);
+    //     // $response = $this->post('/register', [
+    //     //     'name' => 'Test User',
+    //     //     'email' => 'test@example.com',
+    //     //     'password' => 'password',
+    //     //     'password_confirmation' => 'password',
+    //     //     'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
+    //     // ]);
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
-    }
+    //     // $this->assertAuthenticated();
+    //     // $response->assertRedirect(RouteServiceProvider::HOME);
+    // }
 }
