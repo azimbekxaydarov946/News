@@ -28,8 +28,6 @@ jobs:
       run: php artisan storage:link
     - name: language run
       run:   php artisan route:trans:clear
-    - name: npm build runing
-      run:  npm build
     - name: Create Database
       run: |
         mkdir -p database
