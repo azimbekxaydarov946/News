@@ -70,7 +70,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => isset($DATABASE_URL['host']) ?? env('DB_HOST', '127.0.0.1'),
             'port' =>  isset($DATABASE_URL['port']) ?? env('DB_PORT', '5432'),
-            'database' => isset($$DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'], '/') : env('DB_DATABASE', 'forge'),
+            'database' => isset($$DATABASE_URL['path']) ? ltrim($$DATABASE_URL['path'], '/') : env('DB_DATABASE', 'forge'),
             'username' => isset($DATABASE_URL['user']) ?? env('DB_USERNAME', 'forge'),
             'password' =>  isset($DATABASE_URL['password']) ?? env('DB_PASSWORD', ''),
             'charset' => 'utf8',
