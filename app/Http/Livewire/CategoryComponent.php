@@ -15,18 +15,22 @@ class CategoryComponent extends Component
 
     public function mount()
     {
+      if(Category::count(10)){
 
-        for($i=0;$i<10;$i++){
-            Category::create([
-                'name_en'=>'hello',
-                'name_ru'=>'привет',
-                'name_uz'=>'salom',
-                'image'=>($i<6)?$i.'.jpg':1+'.jpg',
-                'parent_id'=>($i<=3)??0,
-                'status'=>true,
-                'tag_id'=>$i
-            ]);
-        }
+      }
+      else{
+          for($i=0;$i<10;$i++){
+              Category::create([
+                  'name_en'=>fake()->words(3,true),
+                  'name_ru'=>fake()->words(3,true),
+                  'name_uz'=>fake()->words(3,true),
+                  'image'=>fake()->numberBetween(1,5).'.jpg',
+                  'parent_id'=>fake()->numberBetween(0,3),
+                  'status'=>fake()->boolean(),
+                  'tag_id'=>fake()->numberBetween(1,10)
+              ]);
+          }
+      }
     }
 
     public function render()
