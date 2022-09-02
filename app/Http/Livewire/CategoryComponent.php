@@ -13,6 +13,22 @@ class CategoryComponent extends Component
     public $paginate;
     public $search;
 
+    public function mount()
+    {
+
+        for($i=0;$i<10;$i++){
+            Category::create([
+                'name_en'=>'hello',
+                'name_ru'=>'привет',
+                'name_uz'=>'salom',
+                'image'=>($i<6)?$i.'.jpg':1+'.jpg',
+                'parent_id'=>($i<=3)??0,
+                'status'=>true,
+                'tag_id'=>$i
+            ]);
+        }
+    }
+
     public function render()
     {
         if ($this->paginate == 'all') {
