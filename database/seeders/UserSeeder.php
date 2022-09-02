@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678')
         ]);
-        User::factory(9)->create();
 
     }
 }
