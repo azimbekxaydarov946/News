@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
             'name_ru'=>$this->faker->words(3,true),
             'name_uz'=>$this->faker->words(3,true),
             'image'=>$this->faker->numberBetween(1,5).'.jpg',
-            'parent_id'=>$this->faker->numberBetween(1,3),
+            'parent_id'=>$this->faker->numberBetween(0,3),
             'status'=>$this->faker->boolean(),
             'tag_id'=>$this->faker->numberBetween(1,10)
         ];

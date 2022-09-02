@@ -19,7 +19,7 @@ class CategoryComponent extends Component
             $this->paginate = Category::count();
             $this->search = null;
         }
-        $parents = Category::with('parent')->whereNull('parent_id')->get();
+        $parents = Category::with('parent')->whereNull('parent_id')->orWhere('parent_id',0)->get();
         $categories = Category::query();
         if ($this->search) {
             $categories = $categories->where('parent_id', $this->search);
