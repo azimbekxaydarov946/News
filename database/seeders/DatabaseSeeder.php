@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
 
-        Category::truncate();
         // $this->call(CategorySeeder::class);
         // $this->call(CommentSeeder::class);
         // $this->call(NewsSeeder::class);

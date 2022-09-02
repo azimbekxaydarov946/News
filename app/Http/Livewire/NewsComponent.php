@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\News;
 use App\Models\Tag;
 use Livewire\Component;
@@ -22,6 +23,55 @@ class NewsComponent extends Component
         if ($this->paginate == 'all') {
             $this->paginate = News::count();
         }
+
+      if(News::count()<10){
+          for($i=0;$i<10;$i++){
+              News::create([
+                'title_en'=>fake()->words(5,true),
+                'title_ru'=>fake()->words(5,true),
+                'title_uz'=>fake()->words(5,true),
+
+                'sub_title_en'=>fake()->words(5,true),
+                'sub_title_ru'=>fake()->words(5,true),
+                'sub_title_uz'=>fake()->words(5,true),
+
+                'description_en'=>fake()->words(300,true),
+                'description_ru'=>fake()->words(300,true),
+                'description_uz'=>fake()->words(300,true),
+
+                'image'=>fake()->numberBetween(1,5).'.jpg',
+                'date'=>fake()->date(),
+                'user_id'=>fake()->numberBetween(2,10),
+                'category_id'=>fake()->numberBetween(1,10),
+                'status'=>fake()->boolean(),
+                'tag_id'=>fake()->numberBetween(1,10)
+              ]);
+
+              Comment::create([
+                'text'=>fake()->text(),
+                'name'=>fake()->name(),
+                'email'=>fake()->email(),
+                'date'=>fake()->date(),
+                'news_id'=>fake()->numberBetween(1,10)
+            ]);
+            Category::create([
+                'name_en'=>fake()->words(3,true),
+                'name_ru'=>fake()->words(3,true),
+                'name_uz'=>fake()->words(3,true),
+                'image'=>fake()->numberBetween(1,5).'.jpg',
+                'parent_id'=>fake()->numberBetween(0,3),
+                'status'=>fake()->boolean(),
+                'tag_id'=>fake()->numberBetween(1,10)
+            ]);
+
+            Tag::create([
+              "name_uz"=>fake()->unique()->words(1,true),
+              "name_en"=>fake()->unique()->words(1,true),
+              "name_ru"=>fake()->unique()->words(1,true),
+          ]);
+          }
+      }
+
 
     }
 
