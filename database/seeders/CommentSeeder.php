@@ -16,6 +16,14 @@ class CommentSeeder extends Seeder
     public function run()
     {
         Comment::truncate();
-        Comment::factory(10)->create();
+        for($i=0;$i<10;$i++){
+            Comment::create([
+                'text'=>fake()->text(),
+                'name'=>fake()->name(),
+                'email'=>fake()->email(),
+                'date'=>fake()->date(),
+                'news_id'=>fake()->numberBetween(1,10)
+            ]);
+        }
     }
 }

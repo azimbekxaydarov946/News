@@ -5,7 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factory;
 
 class DatabaseSeeder extends Seeder
 {
