@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\News;
 use App\Models\Tag;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -70,13 +69,6 @@ class NewsComponent extends Component
               "name_en"=>fake()->unique()->words(1,true),
               "name_ru"=>fake()->unique()->words(1,true),
           ]);
-          User::create([
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-          ])
           }
       }
 
