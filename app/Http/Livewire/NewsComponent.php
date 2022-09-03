@@ -67,9 +67,9 @@ class NewsComponent extends Component
                 ]);
 
                 Tag::create([
-                    "name_uz" => 'Tag nomi-'.$i,
-                    "name_en" => 'Tag name-'.$i,
-                    "name_ru" => 'Название тэга-'.$i,
+                    "name_uz" => 'Tag nomi',
+                    "name_en" => 'Tag name',
+                    "name_ru" => 'Название тэга',
                 ]);
                 User::create([
                     'name' => 'Jon',
