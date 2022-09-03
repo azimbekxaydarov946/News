@@ -26,60 +26,62 @@ class NewsComponent extends Component
             $this->paginate = News::count();
         }
 
-        if (News::count() < 10) {
-            for ($i = 0; $i < 10; $i++) {
-                News::create([
-                    'title_en' => 'News',
-                    'title_ru' => 'Новости',
-                    'title_uz' => 'Yangiliklar',
+      if(News::count()<10){
+          for($i=0;$i<10;$i++){
+              News::create([
+                'title_en'=>fake()->words(5,true),
+                'title_ru'=>fake()->words(5,true),
+                'title_uz'=>fake()->words(5,true),
 
-                    'sub_title_en' => 'News',
-                    'sub_title_ru' => 'Новости',
-                    'sub_title_uz' => 'Yangiliklar',
+                'sub_title_en'=>fake()->words(5,true),
+                'sub_title_ru'=>fake()->words(5,true),
+                'sub_title_uz'=>fake()->words(5,true),
 
-                    'description_en' => 'News description',
-                    'description_ru' => 'Описание новости',
-                    'description_uz' => 'Yangilik tavsifi',
+                'description_en'=>fake()->words(300,true),
+                'description_ru'=>fake()->words(300,true),
+                'description_uz'=>fake()->words(300,true),
 
-                    'image' => (string)$i . '.jpg',
-                    'date' => date('d/m/Y'),
-                    'user_id' => $i,
-                    'category_id' => $i,
-                    'status' => true,
-                    'tag_id' => $i
-                ]);
+                'image'=>fake()->numberBetween(1,5).'.jpg',
+                'date'=>fake()->date(),
+                'user_id'=>fake()->numberBetween(2,10),
+                'category_id'=>fake()->numberBetween(1,10),
+                'status'=>fake()->boolean(),
+                'tag_id'=>fake()->numberBetween(1,10)
+              ]);
 
-                Comment::create([
-                    'text' => 'Comment text',
-                    'name' => 'Tom',
-                    'email' => 'tom1@gmail.com',
-                    'date' => date('d/m/Y'),
-                    'news_id' => $i
-                ]);
-                Category::create([
-                    'name_en' => 'Category name',
-                    'name_ru' => 'Название категории',
-                    'name_uz' => 'Kategoriya nomi',
-                    'image' => (string)$i . '.jpg',
-                    'parent_id' => ($i < 3) ? $i : 0,
-                    'status' => true,
-                    'tag_id' => $i
-                ]);
+              Comment::create([
+                'text'=>fake()->text(),
+                'name'=>fake()->name(),
+                'email'=>fake()->email(),
+                'date'=>fake()->date(),
+                'news_id'=>fake()->numberBetween(1,10)
+            ]);
+            Category::create([
+                'name_en'=>fake()->words(3,true),
+                'name_ru'=>fake()->words(3,true),
+                'name_uz'=>fake()->words(3,true),
+                'image'=>fake()->numberBetween(1,5).'.jpg',
+                'parent_id'=>fake()->numberBetween(0,3),
+                'status'=>fake()->boolean(),
+                'tag_id'=>fake()->numberBetween(1,10)
+            ]);
 
-                Tag::create([
-                    "name_uz" => 'Tag nomi',
-                    "name_en" => 'Tag name',
-                    "name_ru" => 'Название тэга',
-                ]);
-                User::create([
-                    'name' => 'Jon',
-                    'email' => 'jon@gmail.com',
-                    'email_verified_at' => now(),
-                    'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                    'remember_token' => Str::random(10),
-                ]);
-            }
-        }
+            Tag::create([
+              "name_uz"=>fake()->unique()->words(1,true),
+              "name_en"=>fake()->unique()->words(1,true),
+              "name_ru"=>fake()->unique()->words(1,true),
+          ]);
+          User::create([
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+          ]);
+          }
+      }
+
+
     }
 
     public function render()
@@ -87,17 +89,18 @@ class NewsComponent extends Component
         $news = News::query()->with('user', 'category', 'tag')
             ->withCount('comment')
             ->whereHas('category', function ($query) {
-                $query->where('name_' . app()->getLocale(), 'like', '%' . $this->search . '%');
+                $query->where('name_'.app()->getLocale(), 'like', '%' . $this->search . '%');
             })
             ->orWhereHas('tag', function ($query) {
-                $query->where('name_' . app()->getLocale(), 'like', '%' . $this->search . '%');
+                $query->where('name_'.app()->getLocale(), 'like', '%' . $this->search . '%');
             });
-        if ($this->sort == 'None' || $this->sort == null) {
-            $news = $news->inRandomOrder();
-        } else {
-            $news = $news->orderBy('date', $this->sort ?? 'desc');
-        }
-        $news = $news->paginate((int)$this->paginate);
+            if ($this->sort=='None' || $this->sort==null) {
+                $news=$news->inRandomOrder();
+            }
+            else{
+                $news=$news->orderBy('date', $this->sort??'desc');
+            }
+            $news=$news->paginate((int)$this->paginate);
         $categories = Category::withCount('news')->get();
         $tags = Tag::all();
         return view('livewire.news-component', ['news' => $news, 'categories' => $categories, 'tags' => $tags])->layout('layouts.base');
