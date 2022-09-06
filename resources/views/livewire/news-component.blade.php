@@ -38,7 +38,7 @@
                         @foreach ($news as $item)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{ asset('storage\\' . $item->image) }}"
+                                    <img class="card-img rounded-0" src="{{ asset('images\\' . $item->image) }}"
                                         alt="">
                                     <a href="{{ route('detail', ['id' => $item->id]) }}" class="blog_item_date"
                                         style="text-align: center">

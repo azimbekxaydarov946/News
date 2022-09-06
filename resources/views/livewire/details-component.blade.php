@@ -15,7 +15,7 @@
                     <div class="single-post">
 
                         <div class="feature-img">
-                            <img class="img-fluid" src="{{ asset('storage\\' . $details->image) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('images\\' . $details->image) }}" alt="">
                         </div>
                         <div class="blog_details">
                             <h2>
@@ -135,7 +135,7 @@
                             <h3 class="widget_title">{{ __('main.posts') }}</h3>
                             @foreach ($news as $new)
                                 <div class="media post_item d-flex  align-items-center">
-                                    <img src="{{ asset('storage\\' . $new->image) }}" alt="post" width="55%">
+                                    <img src="{{ asset('images\\' . $new->image) }}" alt="post" width="55%">
                                     <div class="media-body">
                                         <a href="{{ route('detail', ['id' => $new->id]) }}">
                                             <h3>{{ $new->{$title} }}.</h3>

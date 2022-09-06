@@ -53,7 +53,7 @@ class Category extends Resource
             Text::make('name_ru')->sortable(),
             Text::make('name_uz')->sortable(),
             BelongsTo::make('Category','parent')->nullable(),
-            Image::make('image')->sortable()->rules('nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg')->nullable(),
+            Image::make('image')->sortable()->rules('nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg')->disk('images')->nullable(),
             Boolean::make('status')->sortable(),
             BelongsTo::make('Tag')
         ];
