@@ -18,9 +18,9 @@
 
 <code>write db credentials to .env file</code>
 
-<code>php artisan migrate:fresh</code>
-
 <code>php artisan key:generate</code>
+
+<code>php artisan migrate:fresh</code>
 
 <code>php artisan db:seed</code>
 
