@@ -34,7 +34,7 @@
 
 <h3><b>Authorization:</b></h3><br/>
 
-<code>URL: /admin </code>
+##URL: ```/admin ``
     
 |           email         |   password |
 |-------------------------|------------|
