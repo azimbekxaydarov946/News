@@ -38,3 +38,7 @@
     
     Login: admin@gmail.com
     Password: 12345678
+    
+|           email         |   password |
+|-------------------------|------------|
+|      admin@gmail.com    |  12345678  |
