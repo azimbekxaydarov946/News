@@ -2,11 +2,11 @@
 
 <h3><b>Requirements:</b></h3><br/>
     
-    PHP: 8.0.*
+   <code> PHP: 8.0.*</code>
 
 <h3><b>Installation steps:</b></h3><br/>
 
-<code>git clone  https://github.com/azimbekxaydarov946/News.git</code>
+git clone  https://github.com/azimbekxaydarov946/News.git
 
 <code>cd news</code>
 
