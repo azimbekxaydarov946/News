@@ -2,13 +2,13 @@
 
 <h3><b>Requirements:</b></h3><br/>
     
-   <code> PHP: 8.0.*</code>
+   PHP: 8.0.*
 
 <h3><b>Installation steps:</b></h3><br/>
 
-git clone  https://github.com/azimbekxaydarov946/News.git
+<code> git clone  https://github.com/azimbekxaydarov946/News.git</code>
 
-<code>cd news</code><br/>
+<code>cd news</code>
 
 <code>composer update</code>
 
