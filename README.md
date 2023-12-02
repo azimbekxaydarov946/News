@@ -8,7 +8,7 @@
 
 git clone  https://github.com/azimbekxaydarov946/News.git
 
-<code>cd news</code>
+<code>cd news</code><br/>
 
 <code>composer update</code>
 
