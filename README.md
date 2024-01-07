@@ -39,3 +39,5 @@
 |           email         |   password |
 |-------------------------|------------|
 |      admin@gmail.com    |  12345678  |
+|     supplier@gmail.com  |  12345678  |
+|     	user@gmail.com    |  12345678  |
