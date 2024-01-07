@@ -41,3 +41,14 @@
 |      admin@gmail.com    |  12345678  |
 |     supplier@gmail.com  |  12345678  |
 |     	user@gmail.com    |  12345678  |
+
+
+## Get fake data for card payment through this link
+
+<a>https://developer.help.paycom.uz/protokol-subscribe-api</a>
+
+##OR
+
+|               Kart            |     Expired    |
+|-------------------------------|----------------|
+|       8600495473316478        |      03/99     |
